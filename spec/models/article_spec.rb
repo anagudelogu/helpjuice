@@ -1,5 +1,21 @@
 require 'rails_helper'
 
 RSpec.describe Article do
-  pending "add some examples to (or delete) #{__FILE__}"
+  let(:article) { build(:article) }
+
+  describe 'validations' do
+    context 'when the title is blank' do
+      it 'is invalid' do
+        article.title = ''
+        expect(article).not_to be_valid
+      end
+    end
+
+    context 'when the text is blank' do
+      it 'is invalid' do
+        article.text = ''
+        expect(article).not_to be_valid
+      end
+    end
+  end
 end

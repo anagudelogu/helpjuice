@@ -4,7 +4,12 @@
     <h1 class="font-bold text-4xl">Articles</h1>
   </div>
 
-  <div id="articles" class="min-w-full flex flex-wrap gap-4 justify-center">
-    <%= render @articles %>
+  <%= form_with(url: search_articles_path, class: "contents", data: { controller: 'form-submission', 'form-submission-target': 'form'}) do |form| %>
+  <div class=" flex justify-center items-center gap-5">
+    <%= form.label :query, "Search by title:", class: 'hidden' %>
+    <%= form.text_field :query, placeholder: 'Search by title...', data: { action: "input->form-submission#search" } %>
   </div>
+  <% end %>
+
+  <%= render 'list', articles: @articles %>
 </div>
