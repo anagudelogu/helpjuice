@@ -12,8 +12,21 @@
   </head>
 
   <body>
-    <main class="container mx-auto mt-28 px-5 flex">
-      <%= yield %>
+    <main class="container mx-auto mt-28 px-5 flex flex-col">
+
+      <% if @current_user %>
+      <div class="flex justify-between">
+      <p>
+        Welcome <strong><%= @current_user.name %></strong>! take a look at the available articles:
+      </p>
+
+      <%= button_to "Logout", logout_path , { method: :delete, data: { turbo: false }, class: 'rounded-lg py-3 px-5 bg-blue-600 text-white font-medium cursor-pointer' } %>
+      </div>
+        <%= yield %>
+      <% else %>
+        <h2 class=" font-bold text-lg text-center">Please, identify yourself:</h2>
+        <%= render partial: 'users/form', locals: { user: User.new }%>
+      <% end %>
     </main>
   </body>
 </html>
