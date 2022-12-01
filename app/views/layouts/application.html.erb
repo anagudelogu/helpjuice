@@ -11,22 +11,28 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body>
-    <main class="container mx-auto mt-28 px-5 flex flex-col">
+  <body class=" bg-slate-300">
 
-      <% if @current_user %>
-      <div class="flex justify-between">
-      <p>
-        Welcome <strong><%= @current_user.name %></strong>! take a look at the available articles:
-      </p>
+    <% if @current_user %>
+      <header class="flex justify-between bg-slate-900 px-8 py-3">
+        <p class=" text-white">
+          Signed in as: <strong><%= @current_user.name %></strong>
+        </p>
 
-      <%= button_to "Logout", logout_path , { method: :delete, data: { turbo: false }, class: 'rounded-lg py-3 px-5 bg-blue-600 text-white font-medium cursor-pointer' } %>
+        <%= button_to "Logout", logout_path , { method: :delete, data: { turbo: false }, class: 'rounded-lg py-3 px-5 bg-blue-600 text-white font-medium cursor-pointer' } %>
+      </header>
+
+      <main class="container mx-auto flex flex-col w-full">
+          <%= yield %>
+      </main>
+
+    <% else %>
+      <div class="h-screen w-screen flex justify-center items-center flex-col">
+        <div class="bg-slate-400 px-16 py-24 border border-transparent rounded-lg shadow-md shadow-black">
+          <h2 class=" font-bold text-lg text-center mb-12">Please, identify yourself:</h2>
+          <%= render partial: 'users/form', locals: { user: User.new }%>
+        </div>
       </div>
-        <%= yield %>
-      <% else %>
-        <h2 class=" font-bold text-lg text-center">Please, identify yourself:</h2>
-        <%= render partial: 'users/form', locals: { user: User.new }%>
-      <% end %>
-    </main>
+    <% end %>
   </body>
 </html>

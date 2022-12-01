@@ -1,10 +1,10 @@
-<div id="charts">
-  <div>
-    <h3 class="font-bold">The hottest searches: </h3>
+<div id="charts" class="self-center">
+  <div class="my-8">
+    <h3 class="font-bold my-8">The hottest searches: </h3>
     <%= bar_chart top_global_searches %>
   </div>
-  <div>
-    <h3 class="font-bold">Your hottest searches: </h3>
+  <div class="my-8">
+    <h3 class="font-bold my-8">Your hottest searches: </h3>
     <%= pie_chart top_user_searches, legend: 'bottom' %>
   </div>
 </div>
