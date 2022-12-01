@@ -79,6 +79,7 @@ GEM
     bootsnap (1.15.0)
       msgpack (~> 1.2)
     builder (3.2.4)
+    chartkick (4.2.1)
     concurrent-ruby (1.1.10)
     crass (1.0.6)
     debug (1.6.3)
@@ -239,6 +240,7 @@ PLATFORMS
 
 DEPENDENCIES
   bootsnap
+  chartkick
   debug
   factory_bot_rails
   faker!

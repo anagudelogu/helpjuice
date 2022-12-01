@@ -3,7 +3,8 @@ class QueriesController < ApplicationController
     query = params[:query]
 
     if params[:finished] == 'true' && !query.empty?
-      @query = @current_user.queries.create(query:)
+      @current_user.queries.create(query:)
+      redirect_to charts_path and return
     end
 
     @articles = query.present? ? Article.search_by_title(query) : Article.all

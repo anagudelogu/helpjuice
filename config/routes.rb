@@ -7,5 +7,7 @@ Rails.application.routes.draw do
 
   delete '/logout', to: 'users#delete_session'
 
+  get '/charts', to: 'charts#render_charts'
+
   root 'articles#index'
 end

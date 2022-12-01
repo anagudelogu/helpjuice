@@ -1,5 +1,6 @@
-<div class="w-full">
+<div class="w-full flex justify-center items-center">
 
+<div>
   <div class="flex justify-center items-center">
     <h1 class="font-bold text-4xl">Articles</h1>
   </div>
@@ -8,11 +9,14 @@
   
     <%= form.hidden_field :finished, value: false, data: { 'form-submission-target': 'finished'} %>
   
-  <div class=" flex justify-center items-center gap-5">
-    <%= form.label :query, "Search by title:", class: 'hidden' %>
-    <%= form.text_field :query, placeholder: 'Search by title...', data: { action: "input->form-submission#search blur->form-submission#create" } %>
-  </div>
+    <div class=" flex justify-center items-center gap-5">
+      <%= form.label :query, "Search by title:", class: 'hidden' %>
+      <%= form.text_field :query, placeholder: 'Search by title...', data: { action: "input->form-submission#search blur->form-submission#create" } %>
+    </div>
   <% end %>
 
   <%= render 'list', articles: @articles %>
+</div>
+
+  <%= render partial: 'charts/charts', locals: {top_global_searches: @top_global_searches, top_user_searches: @top_user_searches} %>
 </div>
