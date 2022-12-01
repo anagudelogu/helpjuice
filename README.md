@@ -95,6 +95,17 @@ Install this project with:
   cd helpjuice
   bundle install
 ```
+Create the database
+
+```sh
+  rails db:create
+```
+
+Prepopulate the database with some articles data:
+
+```sh
+  rails db:seed
+```
 
 ### Usage
 
